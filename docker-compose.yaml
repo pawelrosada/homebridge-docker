@@ -1,0 +1,18 @@
+version: '3'
+services:
+  homebridge:
+    build: ./.image/homebridge
+    restart: always
+      #network_mode: host
+    volumes:
+      - .docker-data:/var/lib/homebridge/
+    ports:
+      - "80:8581"
+      - "51269:51269"
+      - "44726:44726"
+      - "5353:5353"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
