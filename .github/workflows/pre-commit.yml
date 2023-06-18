@@ -26,7 +26,7 @@ jobs:
         with:
           uri: 'https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64'
           name: 'hadolint'
-          versionSpec: v2.12.0
+          version: v2.12.0
 
       - uses: pre-commit/action@v3.0.0
         with: 
