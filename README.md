@@ -1,10 +1,10 @@
 # Homebridge Docker Setup
 
-This project sets up a Docker container for running Homebridge on a Raspberry Pi using the `balenalib/raspberry-pi-debian` base image.
+This project sets up a Docker container for running Homebridge on a Raspberry Pi, including the Raspberry Pi Zero with ARM6 architecture, using the `balenalib/raspberry-pi-debian` base image.
 
 ## Installation
 
-1. Install Docker on your Raspberry Pi if you haven't already.
+1. Install Docker on your Raspberry Pi, including the Raspberry Pi Zero, if you haven't already. Make sure to use the appropriate installation instructions for ARM6 architecture.
 
 2. Clone this repository to your Raspberry Pi.
 
@@ -34,6 +34,8 @@ The Homebridge container uses the `json-file` logging driver with a maximum log 
 ## Troubleshooting
 
 If you encounter any issues, you can refer to the Homebridge documentation for troubleshooting steps or open an issue in this repository.
+
+Please note that for the Raspberry Pi Zero with ARM6 architecture, you may need to ensure that the necessary dependencies and packages are compatible with ARM6. Some Homebridge plugins or packages may have specific requirements that need to be addressed.
 
 ## Contributing
 
