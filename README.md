@@ -10,17 +10,17 @@ This project sets up a Docker container for running Homebridge on a Raspberry Pi
 
 3. Build the Homebridge Docker image by running the following command in the project directory:
     ```shell
-    docker-compose build
+    docker compose build
     ```
 
 4. Start the Homebridge container by running the following command:
     ```shell
-    docker-compose up -d
+    docker compose up -d
     ```
 
 5. Verify that Homebridge is running by checking the container logs:
     ```shell
-    docker-compose logs -f homebridge
+    docker compose logs -f homebridge
     ```
 
 ## Configuration
@@ -29,7 +29,7 @@ The configuration for Homebridge is stored in the `.docker-data` volume. You can
 
 ## Logging
 
-The Homebridge container uses the `json-file` logging driver with a maximum log size of 10MB and a single log file. You can adjust these settings in the `docker-compose.yml` file if needed.
+The Homebridge container uses the `json-file` logging driver with a maximum log size of 10MB and a single log file. You can adjust these settings in the `docker-compose.yaml` file if needed.
 
 ## Troubleshooting
 
