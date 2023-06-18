@@ -21,10 +21,11 @@ jobs:
           python-version: '3.10'
       - name: yq - portable yaml processor
         uses: mikefarah/yq@v4.34.1
-
-      - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@master
-        continue-on-error: true
+        
+      - uses: supplypike/setup-bin@v3
+        with:
+          uri: 'https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64'
+          name: 'hadolint'
 
       - uses: pre-commit/action@v3.0.0
         with: 
