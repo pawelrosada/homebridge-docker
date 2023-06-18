@@ -1,4 +1,5 @@
 FROM balenalib/raspberry-pi-debian:latest as base
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sSfL https://repo.homebridge.io/KEY.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/homebridge.gpg  > /dev/null \
     && echo "deb [signed-by=/usr/share/keyrings/homebridge.gpg] https://repo.homebridge.io stable main" | sudo tee /etc/apt/sources.list.d/homebridge.list > /dev/null \
     && sudo apt-get update \
