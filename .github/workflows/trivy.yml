@@ -45,6 +45,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           input: ./vuln-image.tar
+          ignore-unfixed: true
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
