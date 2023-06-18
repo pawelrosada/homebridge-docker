@@ -39,8 +39,7 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker buildx build -t homebridge-docker:${{ github.sha }} --file .image/homebridge/Dockerfile .
-          docker buildx -o vuln-image.tar homebridge-docker:${{ github.sha }}
+          docker buildx build -t homebridge-docker:${{ github.sha }} --output=tar --file .image/homebridge/Dockerfile .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
