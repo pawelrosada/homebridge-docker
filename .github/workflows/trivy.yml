@@ -39,15 +39,17 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker buildx build -t homebridge-docker:${{ github.sha }}  -o type=docker,dest=- --file .image/homebridge/Dockerfile . > ${{ github.workspace }}/vuln-image.tar
+          docker buildx build -t homebridge-docker:${{ github.sha }}  -o type=tar,dest=- --file .image/homebridge/Dockerfile . > ${{ github.workspace }}/vuln-image.tar
           ls ${{ github.workspace }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
-      - name: Test
-        run: |
-          ls ${{ github.workspace }}
-
+        with:
+          input: ${{ github.workspace }}/vuln-image.tar
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
