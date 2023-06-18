@@ -39,13 +39,13 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker buildx build -t homebridge-docker:${{ github.sha }}  -o type=tar,dest=- --file .image/homebridge/Dockerfile . > ${{ github.workspace }}/vuln-image.tar
-          ls ${{ github.workspace }}
+          docker buildx build -t homebridge-docker:${{ github.sha }}  -o type=tar,dest=- --file .image/homebridge/Dockerfile . > vuln-image.tar
+          ls
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          input: ${{ github.workspace }}/vuln-image.tar
+          input: ./vuln-image.tar
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
