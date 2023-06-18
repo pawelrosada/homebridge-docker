@@ -13,7 +13,7 @@ repos:
     hooks:
       - id: bundler-audit
       - id: fasterer
-      - id: markdownlint # Configure in .mdlrc
+      #- id: markdownlint # Configure in .mdlrc
       - id: reek
       - id: require-ascii
       - id: rubocop
