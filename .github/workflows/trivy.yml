@@ -28,24 +28,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-        with:
-          platforms: 'arm64,arm'
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Build an image from Dockerfile
-        run: |
-          docker buildx build -t docker.io/pawelrosada/homebridge-docker:${{ github.sha }} --file .image/homebridge/Dockerfile .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/pawelrosada/homebridge-docker:${{ github.sha }}'
-          format: 'template'
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'sarif'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
