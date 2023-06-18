@@ -10,34 +10,34 @@ This project sets up a Docker container for running Homebridge on a Raspberry Pi
 
 3. Build the Homebridge Docker image by running the following command in the project directory:
     ```shell
-    docker-compose build
+    docker compose build
     ```
 
-   If you are using an older version of Docker that doesn't support `docker-compose` command-line, you can use the following command instead:
+   If you are using an older version of Docker that doesn't support `docker compose` command-line, you can use the following command instead:
     ```shell
-    docker compose build
+    docker-compose build
     ```
 
    Note: The `docker compose` command-line is available starting from Docker version 1.27.0. If you are using an older version, you may need to upgrade Docker or use `docker-compose` command-line.
 
 4. Start the Homebridge container by running the following command:
     ```shell
-    docker-compose up -d
+    docker compose up -d
     ```
 
    If you are using an older version of Docker, use the following command instead:
     ```shell
-    docker compose up -d
+    docker-compose up -d
     ```
 
 5. Verify that Homebridge is running by checking the container logs:
     ```shell
-    docker-compose logs -f homebridge
+    docker compose logs -f homebridge
     ```
 
    For older versions of Docker, use the following command:
     ```shell
-    docker compose logs -f homebridge
+    docker-compose logs -f homebridge
     ```
 
 ## Configuration
