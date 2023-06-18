@@ -5,8 +5,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sSfL https://repo.homebridge.io/KEY.gpg | gpg --dearmor | tee /usr/share/keyrings/homebridge.gpg  > /dev/null \
     && echo "deb [signed-by=/usr/share/keyrings/homebridge.gpg] https://repo.homebridge.io stable main" | tee /etc/apt/sources.list.d/homebridge.list > /dev/null \
     && apt-get update \
-    && apt-get install homebridge -y \
-    && apt-get upgrade -y
+    && apt-get install homebridge --no-install-recommends -y \
+    && apt-get upgrade -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["/opt/homebridge/start.sh", "--allow-root"]
 
