@@ -1,0 +1,24 @@
+---
+repos:
+  - repo: https://github.com/iamthefij/docker-pre-commit
+    rev: master
+    hooks:
+      - id: docker-compose-check
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: master
+    hooks:
+      - id: bundler-audit
+      - id: fasterer
+      - id: markdownlint # Configure in .mdlrc
+      - id: reek
+      - id: require-ascii
+      - id: rubocop
+      - id: script-must-have-extension
+      - id: script-must-not-have-extension
+      - id: shellcheck
+      - id: shfmt
+   
